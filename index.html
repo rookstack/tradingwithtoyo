@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading with ToYo | Momentum Options Signals & Education</title>
+  <meta name="description" content="Learn momentum options trading with ToYo. Weekly signals, community, and education for traders at every level. Join free today." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050a14;
+      --card: #0d1a2b;
+      --border: #1a2d45;
+      --green: #00ff88;
+      --blue: #0ea5e9;
+      --white: #f0f6ff;
+      --gray: #8899aa;
+      --red: #ff4466;
+    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--white); }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: rgba(5,10,20,0.95);
+      backdrop-filter: blur(10px); z-index: 100;
+    }
+    .logo { font-size: 1.3rem; font-weight: 900; color: var(--white); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .btn-nav {
+      background: var(--green); color: #050a14; padding: 10px 24px;
+      border-radius: 6px; font-weight: 800; text-decoration: none;
+      font-size: 0.9rem; transition: opacity 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      padding: 100px 40px 80px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,255,136,0.08) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3);
+      color: var(--green); font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 900; line-height: 1.1;
+      margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero p {
+      font-size: 1.15rem; color: var(--gray); max-width: 560px;
+      margin: 0 auto 44px; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green); color: #050a14; padding: 16px 40px;
+      border-radius: 8px; font-size: 1.05rem; font-weight: 800;
+      text-decoration: none; transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--white); padding: 16px 40px;
+      border-radius: 8px; font-size: 1.05rem; font-weight: 700;
+      text-decoration: none; border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gray); }
+
+    /* TICKER */
+    .ticker-bar {
+      background: var(--card); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); padding: 12px 0; overflow: hidden;
+    }
+    .ticker-inner {
+      display: flex; gap: 48px; white-space: nowrap;
+      animation: scroll 30s linear infinite;
+    }
+    .ticker-item { display: flex; gap: 8px; align-items: center; font-size: 0.85rem; font-weight: 700; }
+    .tick-up { color: var(--green); }
+    .tick-down { color: var(--red); }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
+    section { padding: 80px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem;
+      color: var(--green); font-weight: 700; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;
+      margin-bottom: 16px; line-height: 1.15;
+    }
+    .section-sub { color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 560px; margin-bottom: 56px; }
+
+    /* HOW IT WORKS */
+    #how { background: var(--card); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+    .step { text-align: center; padding: 32px 20px; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #050a14; font-size: 1.4rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+    .step p { color: var(--gray); font-size: 0.93rem; line-height: 1.6; }
+
+    /* SIGNALS PREVIEW */
+    .signals-preview {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    }
+    .signal-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px; position: relative; overflow: hidden;
+    }
+    .signal-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+    }
+    .signal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .signal-ticker { font-size: 1.3rem; font-weight: 900; color: var(--white); }
+    .signal-type {
+      background: rgba(0,255,136,0.1); color: var(--green);
+      font-size: 0.75rem; font-weight: 700; padding: 4px 10px;
+      border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .signal-type.put { background: rgba(255,68,102,0.1); color: var(--red); }
+    .signal-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .signal-label { color: var(--gray); font-size: 0.85rem; }
+    .signal-val { font-size: 0.9rem; font-weight: 700; }
+    .signal-result { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); text-align: center; }
+    .signal-gain { font-size: 1.4rem; font-weight: 900; color: var(--green); }
+    .blur-overlay {
+      position: absolute; inset: 0; backdrop-filter: blur(6px);
+      background: rgba(5,10,20,0.6); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px; border-radius: 12px;
+    }
+    .blur-overlay span { color: var(--gray); font-size: 0.9rem; }
+    .blur-overlay a {
+      background: var(--green); color: #050a14; padding: 10px 24px;
+      border-radius: 6px; font-weight: 800; text-decoration: none; font-size: 0.9rem;
+    }
+
+    /* PRICING */
+    #pricing { background: var(--card); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .pricing-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+      padding: 40px 32px; text-align: center; position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .pricing-card:hover { border-color: var(--green); transform: translateY(-4px); }
+    .pricing-card.featured {
+      border-color: var(--green);
+      background: linear-gradient(135deg, rgba(0,255,136,0.05), var(--bg));
+    }
+    .popular-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--green); color: #050a14; font-size: 0.72rem; font-weight: 900;
+      padding: 5px 16px; border-radius: 100px; letter-spacing: 1px; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; margin-bottom: 16px; }
+    .plan-price { font-size: 3rem; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+    .plan-price span { font-size: 1rem; color: var(--gray); font-weight: 400; }
+    .plan-desc { color: var(--gray); font-size: 0.88rem; margin-bottom: 28px; line-height: 1.5; }
+    .plan-features { list-style: none; margin-bottom: 36px; text-align: left; }
+    .plan-features li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; color: var(--gray); }
+    .plan-features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+    .plan-features li.no::before { content: '✕ '; color: var(--red); }
+    .plan-features li.no { color: #445566; }
+    .btn-plan {
+      display: block; width: 100%; padding: 14px; border-radius: 8px;
+      font-weight: 800; font-size: 1rem; text-decoration: none; text-align: center;
+      border: 1px solid var(--green); color: var(--green);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-plan:hover, .pricing-card.featured .btn-plan {
+      background: var(--green); color: #050a14;
+    }
+
+    /* COMMUNITY */
+    .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .community-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px 28px; text-align: center;
+    }
+    .comm-icon { font-size: 3rem; margin-bottom: 16px; }
+    .community-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+    .community-card p { color: var(--gray); font-size: 0.92rem; line-height: 1.6; }
+
+    /* FAQ */
+    #faq { background: var(--card); }
+    .faq-list { max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+    .faq-q { font-size: 1rem; font-weight: 700; margin-bottom: 10px; cursor: pointer; }
+    .faq-a { color: var(--gray); font-size: 0.93rem; line-height: 1.7; }
+
+    /* CTA */
+    .cta-section {
+      background: radial-gradient(ellipse at 50% 100%, rgba(0,255,136,0.1) 0%, transparent 70%);
+      text-align: center; padding: 100px 40px;
+    }
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 16px; }
+    .cta-section p { color: var(--gray); font-size: 1rem; margin-bottom: 40px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--card); border-top: 1px solid var(--border);
+      padding: 32px 40px; text-align: center; color: var(--gray); font-size: 0.85rem;
+    }
+    footer strong { color: var(--white); }
+    footer a { color: var(--green); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 20px 60px; }
+      section { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Trading<span>withToYo</span></a>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#signals">Signals</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#pricing" class="btn-nav">Join Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📈 Momentum Options Trading</div>
+  <h1>Stop Guessing.<br>Start <span>Trading with ToYo.</span></h1>
+  <p>Weekly options signals, real-time momentum plays, and a community of traders learning to build real wealth — without the noise.</p>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn-primary">Get My Signals →</a>
+    <a href="#how" class="btn-secondary">See How It Works</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-item"><span>SPY</span><span class="tick-up">+1.24%</span></div>
+    <div class="ticker-item"><span>QQQ</span><span class="tick-up">+0.87%</span></div>
+    <div class="ticker-item"><span>AAPL</span><span class="tick-up">+2.31%</span></div>
+    <div class="ticker-item"><span>TSLA</span><span class="tick-down">-1.02%</span></div>
+    <div class="ticker-item"><span>NVDA</span><span class="tick-up">+3.45%</span></div>
+    <div class="ticker-item"><span>AMZN</span><span class="tick-up">+0.56%</span></div>
+    <div class="ticker-item"><span>META</span><span class="tick-up">+1.89%</span></div>
+    <div class="ticker-item"><span>AMD</span><span class="tick-down">-0.43%</span></div>
+    <!-- duplicate for loop -->
+    <div class="ticker-item"><span>SPY</span><span class="tick-up">+1.24%</span></div>
+    <div class="ticker-item"><span>QQQ</span><span class="tick-up">+0.87%</span></div>
+    <div class="ticker-item"><span>AAPL</span><span class="tick-up">+2.31%</span></div>
+    <div class="ticker-item"><span>TSLA</span><span class="tick-down">-1.02%</span></div>
+    <div class="ticker-item"><span>NVDA</span><span class="tick-up">+3.45%</span></div>
+    <div class="ticker-item"><span>AMZN</span><span class="tick-up">+0.56%</span></div>
+    <div class="ticker-item"><span>META</span><span class="tick-up">+1.89%</span></div>
+    <div class="ticker-item"><span>AMD</span><span class="tick-down">-0.43%</span></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">Simple. Straight. Profitable.</h2>
+    <p class="section-sub">No complicated strategies. No confusing jargon. Just clean momentum setups with clear entries, targets, and stops.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Join the Community</h3>
+        <p>Sign up, choose your plan, and get instant access to our Discord and Telegram groups.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get Weekly Signals</h3>
+        <p>Every week you receive 3-5 momentum options plays with full breakdown — entry, target, stop loss.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Execute & Learn</h3>
+        <p>Follow the trade or learn the setup. We explain the why behind every signal so you grow as a trader.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Collect the Wins</h3>
+        <p>Track your results with the community. Celebrate wins, learn from losses, compound your skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNALS PREVIEW -->
+<section id="signals">
+  <div class="section-inner">
+    <div class="section-label">Sample Plays</div>
+    <h2 class="section-title">What Our Signals Look Like</h2>
+    <p class="section-sub">Real setups, clear information, no fluff. Members see these every week.</p>
+
+    <div class="signals-preview">
+      <!-- Signal 1 - visible -->
+      <div class="signal-card">
+        <div class="signal-header">
+          <div class="signal-ticker">NVDA</div>
+          <div class="signal-type">CALL</div>
+        </div>
+        <div class="signal-row"><span class="signal-label">Strike</span><span class="signal-val">$950C</span></div>
+        <div class="signal-row"><span class="signal-label">Expiry</span><span class="signal-val">2 Weeks</span></div>
+        <div class="signal-row"><span class="signal-label">Entry</span><span class="signal-val">$3.20 avg</span></div>
+        <div class="signal-row"><span class="signal-label">Target</span><span class="signal-val">$6.00+</span></div>
+        <div class="signal-row"><span class="signal-label">Stop</span><span class="signal-val">$1.80</span></div>
+        <div class="signal-result">
+          <div class="signal-gain">+87% 🔥</div>
+        </div>
+      </div>
+
+      <!-- Signal 2 - blurred -->
+      <div class="signal-card" style="position:relative;">
+        <div class="signal-header">
+          <div class="signal-ticker">SPY</div>
+          <div class="signal-type">CALL</div>
+        </div>
+        <div class="signal-row"><span class="signal-label">Strike</span><span class="signal-val">$520C</span></div>
+        <div class="signal-row"><span class="signal-label">Expiry</span><span class="signal-val">1 Week</span></div>
+        <div class="signal-row"><span class="signal-label">Entry</span><span class="signal-val">$1.85 avg</span></div>
+        <div class="signal-row"><span class="signal-label">Target</span><span class="signal-val">$3.50+</span></div>
+        <div class="signal-row"><span class="signal-label">Stop</span><span class="signal-val">$0.90</span></div>
+        <div class="signal-result"><div class="signal-gain">+???</div></div>
+        <div class="blur-overlay">
+          <span>🔒 Members Only</span>
+          <a href="#pricing">Unlock Signals</a>
+        </div>
+      </div>
+
+      <!-- Signal 3 - blurred -->
+      <div class="signal-card" style="position:relative;">
+        <div class="signal-header">
+          <div class="signal-ticker">TSLA</div>
+          <div class="signal-type put">PUT</div>
+        </div>
+        <div class="signal-row"><span class="signal-label">Strike</span><span class="signal-val">$200P</span></div>
+        <div class="signal-row"><span class="signal-label">Expiry</span><span class="signal-val">10 Days</span></div>
+        <div class="signal-row"><span class="signal-label">Entry</span><span class="signal-val">$2.40 avg</span></div>
+        <div class="signal-row"><span class="signal-label">Target</span><span class="signal-val">$5.00+</span></div>
+        <div class="signal-row"><span class="signal-label">Stop</span><span class="signal-val">$1.20</span></div>
+        <div class="signal-result"><div class="signal-gain">+???</div></div>
+        <div class="blur-overlay">
+          <span>🔒 Members Only</span>
+          <a href="#pricing">Unlock Signals</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Plans</div>
+    <h2 class="section-title">Simple, Affordable Pricing</h2>
+    <p class="section-sub">No BS. No upsells. Pick your plan and start getting signals this week.</p>
+
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="pricing-card">
+        <div class="plan-name">Community</div>
+        <div class="plan-price">$0<span>/mo</span></div>
+        <div class="plan-desc">Get started free. Join the community and learn the basics.</div>
+        <ul class="plan-features">
+          <li>Discord community access</li>
+          <li>Educational content</li>
+          <li>Market commentary</li>
+          <li class="no">Weekly signals</li>
+          <li class="no">Signal breakdowns</li>
+          <li class="no">Priority support</li>
+        </ul>
+        <a href="#" class="btn-plan">Join Free</a>
+      </div>
+
+      <!-- Signals -->
+      <div class="pricing-card featured">
+        <div class="popular-badge">⚡ Most Popular</div>
+        <div class="plan-name">Signals</div>
+        <div class="plan-price">$29<span>/mo</span></div>
+        <div class="plan-desc">3-5 momentum options plays every week with full trade breakdown.</div>
+        <ul class="plan-features">
+          <li>Discord community access</li>
+          <li>Educational content</li>
+          <li>Market commentary</li>
+          <li>3-5 weekly signals</li>
+          <li>Entry, target & stop levels</li>
+          <li class="no">Priority support</li>
+        </ul>
+        <a href="#" class="btn-plan">Get Signals</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="pricing-card">
+        <div class="plan-name">VIP</div>
+        <div class="plan-price">$97<span>/mo</span></div>
+        <div class="plan-desc">Everything in Signals plus video breakdowns, watchlist, and direct access.</div>
+        <ul class="plan-features">
+          <li>Discord community access</li>
+          <li>Educational content</li>
+          <li>Market commentary</li>
+          <li>3-5 weekly signals</li>
+          <li>Entry, target & stop levels</li>
+          <li>Weekly video breakdown</li>
+          <li>Personal watchlist access</li>
+          <li>Priority support & Q&A</li>
+        </ul>
+        <a href="#" class="btn-plan">Go VIP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="section-inner">
+    <div class="section-label">The Community</div>
+    <h2 class="section-title">More Than Just Signals</h2>
+    <p class="section-sub">We're building a community of serious traders. Connect, learn, and grow together.</p>
+
+    <div class="community-grid">
+      <div class="community-card">
+        <div class="comm-icon">💬</div>
+        <h3>Discord Server</h3>
+        <p>Real-time chat, trade discussion, market alerts, and community support — all in one place.</p>
+      </div>
+      <div class="community-card">
+        <div class="comm-icon">📱</div>
+        <h3>Telegram Alerts</h3>
+        <p>Get instant signal notifications straight to your phone. Never miss a play.</p>
+      </div>
+      <div class="community-card">
+        <div class="comm-icon">🤖</div>
+        <h3>AI Support Agent</h3>
+        <p>24/7 support bot answers your trading questions instantly — any time, any day.</p>
+      </div>
+      <div class="community-card">
+        <div class="comm-icon">📚</div>
+        <h3>Education Library</h3>
+        <p>Learn momentum trading from the ground up. Beginner-friendly, no fluff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do I need trading experience to join?</div>
+        <div class="faq-a">No. We explain every signal so beginners can follow along and learn. That said, you should understand basic options mechanics before trading real money.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How many signals do I get per week?</div>
+        <div class="faq-a">Signals members get 3-5 momentum options plays per week. Quality over quantity — we only post when the setup is clean.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What broker do I need?</div>
+        <div class="faq-a">Any options-approved brokerage works — Robinhood, Webull, TD Ameritrade, Tastytrade, etc. We don't require a specific platform.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this financial advice?</div>
+        <div class="faq-a">No. Trading with ToYo provides educational content and trade ideas for informational purposes only. Always do your own research and trade responsibly. Past performance is not indicative of future results.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I cancel anytime?</div>
+        <div class="faq-a">Yes. Cancel anytime — no contracts, no fees, no questions asked.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Trade Smarter?</h2>
+  <p>Join hundreds of traders getting clean momentum signals every week.</p>
+  <a href="#pricing" class="btn-primary">Get Started Today →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Trading with ToYo</strong> &nbsp;|&nbsp; <a href="mailto:hello@tradingwithtoyo.com">hello@tradingwithtoyo.com</a></p>
+  <p style="margin-top:12px; font-size:0.78rem; color:#445566;">
+    Disclaimer: Trading with ToYo provides educational content for informational purposes only. 
+    This is not financial advice. Options trading involves risk of loss. Trade responsibly.
+  </p>
+  <p style="margin-top:8px;">© 2026 Trading with ToYo. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
